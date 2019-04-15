@@ -51,7 +51,7 @@ class LSR(nn.Module):
             smoothed labels in one hot format
         """
         one_hot = self._one_hot(target, length, value=1 - smooth_factor)
-        one_hot += smooth_factor / length
+        one_hot += smooth_factor / (length - 1)
 
         return one_hot.to(target.device)
 
